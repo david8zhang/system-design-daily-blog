@@ -21,7 +21,7 @@ They took a look at the current video processing pipeline and broke it up into s
 
 - **Video Inspection Service (VIS)**: Takes the raw media files extracts some metadata for downstream services. Flag issues if we see some invalid or sus metadata
 - **Complexity Analysis Service (CAS)**: Looks at the content itself to figure out the optimal encoding recipe for it (using some metric called "complexity"). Calls VES to do some pre-encoding and VQS on that output as well.
-- **Ladder Generation Service (LGS)**: Creates the actual encoding recipe based on CAS's results. Netflix has a bunch of little tricks for optimizing this, like KFC's 11 Herbs and Spices.
+- **Ladder Generation Service (LGS)**: Creates the actual encoding recipe based on CAS's results. Netflix has a bunch of little tricks for optimizing this.
 - **Video Encoding Service (VES)**: does all the encoding stuff by breaking all the files into little chunks and encoding each one in parallel and stitching together the output
 - **Video Validation Service (VVS)**: Takes an encoded video and compares the results with the expected results based on the encode. Flag any discrepancies.
 - **Video Quality Service (VQS)**: does all the video quality calculation (but does it do this for each chunk still or does it do it for the whole output now??)
@@ -38,4 +38,4 @@ Next there's the studio operations use case, e.g. marketing clips, production re
 
 The whole process of building and migrating everything took 5 years. But it's paid some dividends - the extensibility of microservices allows quick iteration and deployment of new features like Ads encoding optimization (for the Ad-supported plan).
 
-So yeah the moral of the story is that if you got this big ass monolith and five spare years, maybe you 🫵 should try doing microservices, ya dingus
+So yeah the moral of the story is that if you got this big ass monolith and five spare years, maybe you 🫵 should try doing microservices.
