@@ -21,7 +21,7 @@ Some other things to note:
 
 ## Shopify Data Architecture
 
-Shopify is organized into _pods_. A pod contains data for one or more shops and is a "complete version of Shopify that can run anywhere in the world". Think of it like an enhanced data shard.
+Shopify data is organized into _pods_. A pod contains data for one or more shops and is a "complete version of Shopify that can run anywhere in the world". Think of it like an enhanced data shard.
 
 The pods themselves are stateful and isolated from one another. In contrast, the web workers and jobs that interact with them are stateless and can be shared. This means more web workers can be allocated to a particular pod during large traffic spikes (e.g. in the event of a flash sale).
 
@@ -70,7 +70,7 @@ Here's a nice diagram visualizing the request flow:
 
 Furthermore, credit card transactions need to be **idempotent**, meaning multiple duplicate requests being sent and processed should yield the same result as sending and processing single request. This is for obvious reasons - if we double charge a credit card we get a pissed off customer.
 
-Shopify does this by including an _idempotency key_, which is a unique key that the server uses to recognize subsequent retries of the same request. They also developed a library for creating idempotent actions, enabling devs to describe how to store state and recover from partial failures.
+Shopify does this by including an _idempotency key_, which is a unique key that the server uses to recognize subsequent retries of the same request. They also developed a library for creating idempotent actions, enabling devs to describe how to store state and retry requests.
 
 ## Scaling Pods
 
@@ -105,4 +105,4 @@ Shopify also created a **resiliency matrix** which describes the dependencies of
 
 Shopify also uses [circuit breakers](/topic/13_software_architecture?subtopic=04_microservices_and_fault_tolerance) to improve service uptime and prevent cascading failures. They use an internally developed library called Semian to implement these in Ruby's HTTP client.
 
-Shopify also has an open source tool called [Toxiproxy](https://github.com/Shopify/toxiproxy), which enables service failures and latency to be incorporated into unit tests. Toxiproxy consists of a TCP proxy written in Go and a client communicating with the proxy over HTTP. Developers can then simulate latency and failures by routing all connections through Toxiproxy.
+In addition, Shopify developed a tool called [Toxiproxy](https://github.com/Shopify/toxiproxy), which enables service failures and latency to be incorporated into unit tests. Toxiproxy consists of a TCP proxy written in Go and a client communicating with the proxy over HTTP. Developers can then simulate latency and failures by routing all connections through Toxiproxy.
