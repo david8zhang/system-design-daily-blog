@@ -26,7 +26,7 @@ Some other things to note:
 
 ## Shopify Data Architecture
 
-Shopify is organized into _pods_. A pod contains data for one or more shops and is a "complete version of Shopify that can run anywhere in the world". Think of it like an enhanced data shard.
+Shopify data is organized into _pods_. A pod contains data for one or more shops and is a "complete version of Shopify that can run anywhere in the world". Think of it like an enhanced data shard.
 
 The pods themselves are stateful and isolated from one another. In contrast, the web workers and jobs that interact with them are stateless and can be shared. This means more web workers can be allocated to a particular pod during large traffic spikes (e.g. in the event of a flash sale).
 
