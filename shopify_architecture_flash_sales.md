@@ -1,8 +1,3 @@
----
-author: David Zhang
-date: 02/05/2024
----
-
 # How Shopify Handles The World's Biggest Flash Sales Without Exploding
 
 ## Background Info
