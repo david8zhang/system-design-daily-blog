@@ -2,11 +2,11 @@
 
 [Full article link](https://medium.com/netflix-techblog/rebuilding-netflix-video-processing-pipeline-with-microservices-4e5e6310e359)
 
-### Background Info
+## Background Info
 
 Back in 2014, Netflix developed this nifty video processing platform called Reloaded, which was designed to convert high quality media files into compressed assets for streaming purposes.
 
-Reloaded was initially built as a [monolith](/topic/13_software_architecture). And over the years, it began to grow (uh oh). As a wise philosopher (me) once said - _"Mo' nolith? Mo' features, mo' problems"_. Here are a few:
+Reloaded was initially built as a [monolith](/topic/13_software_architecture?subtopic=01_monoliths_and_microservices). And over the years, it began to grow (uh oh). As a wise philosopher (me) once said - _"Mo' nolith? Mo' features, mo' problems"_. Here are a few:
 
 - **Tightly coupled functionality**. Video quality logic was entangled with video encoding, so it was super annoying to recalculate video quality without re-encoding
 - **DRY Violations**: Had a whole bunch of gross, repeated code since everything was stewing in the same repository
@@ -15,7 +15,7 @@ Reloaded was initially built as a [monolith](/topic/13_software_architecture). A
 
 They decided to build out a new platform called **Cosmos**.
 
-### How those crazy sons of bitches did it
+## How those crazy sons of bitches did it
 
 They took a look at the current video processing pipeline and broke it up into steps. Then they rolled out services that do each step:
 
@@ -26,7 +26,7 @@ They took a look at the current video processing pipeline and broke it up into s
 - **Video Validation Service (VVS)**: Takes an encoded video and compares the results with the expected results based on the encode. Flag any discrepancies.
 - **Video Quality Service (VQS)**: does all the video quality calculation (but does it do this for each chunk still or does it do it for the whole output now??)
 
-### Orchestrator Services
+## Orchestrator Services
 
 Video processing has a couple of use cases. So they needed some orchestrator services to handle each one.
 
@@ -34,7 +34,7 @@ First, obviously, there's the member streaming use case where the encoded assets
 
 Next there's the studio operations use case, e.g. marketing clips, production reviews. These actually require some fast turnarounds since the production teams will look at the encoded video output and decide how they should shoot for the next day. So the Studio Workflow Orchestrator is optimized for speed. It also has some studio-specific features like [forensic watermarking](https://massive.io/content-security/what-is-forensic-watermarking/) (an anti-piracy thing)
 
-### Microservices are Lowkey Bussin
+## Microservices are Lowkey Bussin
 
 The whole process of building and migrating everything took 5 years. But it's paid some dividends - the extensibility of microservices allows quick iteration and deployment of new features like Ads encoding optimization (for the Ad-supported plan).
 
