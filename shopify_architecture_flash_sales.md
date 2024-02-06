@@ -9,7 +9,7 @@ date: 02/05/2024
 
 [Original QCon tech talk video](https://www.youtube.com/watch?v=MV5Kdwzwcag)
 
-Flash sales on Shopify aren't like those Black Friday stampedes you see IRL. Those are seasonal, whereas on Shopify, these shopping frenzies can happen at any time. For example, online "hypebeast" brands will generate tons of hype for limited edition product drops.
+Flash sales on Shopify aren't like those Black Friday stampedes you see IRL. Those are seasonal, whereas on Shopify, these shopping frenzies can happen at any time. For example, online brands will generate tons of hype for limited edition product drops and subsequently bombard Shopify servers with traffic when the product becomes available.
 
 This means Shopify's architecture has to be robust and scalable, especially as the number of merchants grows.
 
