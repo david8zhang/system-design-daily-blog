@@ -75,7 +75,7 @@ Here's a nice diagram visualizing the request flow:
 
 Furthermore, credit card transactions need to be **idempotent**, meaning multiple duplicate requests being sent and processed should yield the same result as sending and processing single request. This is for obvious reasons - if we double charge a credit card we get a pissed off customer.
 
-Shopify does this by including an _idempotency key_, which is a unique key that the server uses to recognize subsequent retries of the same request. They also developed a library for creating idempotent actions, enabling devs to describe how to store state and recover from partial failures.
+Shopify does this by including an _idempotency key_, which is a unique key that the server uses to recognize subsequent retries of the same request. They also developed a library for creating idempotent actions, enabling devs to describe how to store state and retry requests.
 
 ## Scaling Pods
 
