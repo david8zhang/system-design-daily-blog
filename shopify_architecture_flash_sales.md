@@ -1,8 +1,8 @@
 # How Shopify Handles The World's Biggest Flash Sales Without Exploding
 
-## Background Info
-
 [Original QCon tech talk video](https://www.youtube.com/watch?v=MV5Kdwzwcag)
+
+## Background Info
 
 Flash sales on Shopify aren't like those Black Friday stampedes you see IRL. Those are seasonal, whereas on Shopify, these shopping frenzies can happen at any time. For example, online brands will generate tons of hype for limited edition product drops and subsequently bombard Shopify servers with traffic when the product becomes available.
 
@@ -12,7 +12,7 @@ This means Shopify's architecture has to be robust and scalable, especially as t
 
 - MySQL, Redis, Memcached for storing data
 - Mainly Ruby on Rails for backend, tho some Go, Lua for performance critical components
-- React and React Native with GraphQL APIs on the frontend
+- React and React Native with GraphQL on the frontend
 
 Some other things to note:
 
