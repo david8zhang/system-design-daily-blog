@@ -1,6 +1,6 @@
 # How Shopify Handles The World's Biggest Flash Sales Without Exploding
 
-[Original QCon tech talk video](https://www.youtube.com/watch?v=MV5Kdwzwcag)
+_by David Zhang, published Feb 7th, 2024_
 
 ## Background Info
 
@@ -106,3 +106,5 @@ Shopify also created a **resiliency matrix** which describes the dependencies of
 Shopify also uses [circuit breakers](/topic/13_software_architecture?subtopic=04_microservices_and_fault_tolerance) to improve service uptime and prevent cascading failures. They use an internally developed library called Semian to implement these in Ruby's HTTP client.
 
 In addition, Shopify developed a tool called [Toxiproxy](https://github.com/Shopify/toxiproxy), which enables service failures and latency to be incorporated into unit tests. Toxiproxy consists of a TCP proxy written in Go and a client communicating with the proxy over HTTP. Developers can then simulate latency and failures by routing all connections through Toxiproxy.
+
+[Original QCon tech talk video](https://www.youtube.com/watch?v=MV5Kdwzwcag)

@@ -1,5 +1,7 @@
 # How Twitch Intelligently Ingests Live Video at Global Scale
 
+_by David Zhang, published Feb 13th, 2024_
+
 ## Background Info
 
 Twitch ran into problems when its globally distributed Point of Presence (PoP) server fleet couldn't handle faults or cyclical traffic loads efficiently. This was all due to its stinky HAProxy setup which stupidly sent video data from one PoP to the same origin, regardless of whether or not that origin should or could handle processing. What they did next will shock you!
@@ -104,3 +106,5 @@ Twitch is now much more fault tolerant, able to dynamically re-route traffic in 
 ## The Takeaway
 
 So yeah, in short, if you're ever trying to intelligently route live video data for efficient compute utilization, maybe you 🫵 should try building four new pieces of software to orchestrate the process. Also maybe dust off those advanced algo textbooks from college.
+
+[Full Article Link](https://blog.twitch.tv/en/2022/04/26/ingesting-live-video-streams-at-global-scale/)
