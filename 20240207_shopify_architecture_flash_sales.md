@@ -46,20 +46,15 @@ This presents a few problems for Shopify
 1. Rails app is a monolith being deployed 40 times a day. Auditing every time isn't feasible.
 2. Shops can be customized via HTML and Javascript, and Shopify Apps can add additional functionality to stores. Don't wanna expose any credit card info to that stuff.
 
-The solution? Isolate redit card payment data from the frontend and the Rails monolith entirely.
+The solution? Isolate credit card payment data from the frontend and the Rails monolith entirely.
 
 When a user makes a purchase, the following occurs:
 
 1. Credit card info is handled by a web form hosted in an iFrame, isolating it from the rest of the (potentially merchant-controlled) Javascript / HTML.
-
 2. The information is sent over to a service called CardSink, which encrypts and stores it, responding with a Card token back to the client
-
 3. The web client sends that Card token and order info to Shopify backend monolith
-
 4. The backend monolith calls another service called CardServer with the token and metadata.
-
 5. CardServer uses that token and metadata to decrypt the credit card info and uses it to send a request to the appropriate payment processor.
-
 6. Payment processor handles payment authorization, returns a success/declined response to the Shopify monolith, which converts it into an order.
 
 Here's a nice diagram visualizing the request flow:

@@ -6,7 +6,7 @@ _by David Zhang, published Feb 4th, 2024_
 
 Back in 2014, Netflix developed this nifty video processing platform called Reloaded, which was designed to convert high quality media files into compressed assets for streaming purposes.
 
-Reloaded was initially built as a [monolith](/topic/13_software_architecture?subtopic=01_monoliths_and_microservices). And over the years, it began to grow (uh oh). As a wise philosopher (me) once said - _"Mo' nolith? Mo' features, mo' problems"_. Here are a few:
+Reloaded was initially built as a [monolith](/topic/13_software_architecture?subtopic=01_monoliths_and_microservices). And over the years, it began to grow (uh oh). As a wise philosopher (me) once said - _"Mo' nolith, mo' problems"_. Here are a few:
 
 - **Tightly coupled functionality**. Video quality logic was entangled with video encoding, so it was super annoying to recalculate video quality without re-encoding
 - **DRY Violations**: Had a whole bunch of gross, repeated code since everything was stewing in the same repository
